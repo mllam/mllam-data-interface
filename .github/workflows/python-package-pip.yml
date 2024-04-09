@@ -1,0 +1,22 @@
+name: test
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test pip install python ${{ matrix.python-version }} on ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PDM
+        uses: pdm-project/setup-pdm@v4
+      - name: Install package with pdm
+        run: |
+          pdm install
+      - name: Run tests
+        run: |
+          pdm run python -m pytest
