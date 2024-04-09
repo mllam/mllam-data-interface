@@ -1,8 +1,8 @@
+import importlib
 from pathlib import Path
 
 import xarray as xr
 import yaml
-import importlib
 
 SPECS_ROOT_PATH = Path(__file__).parent.parent.parent / "specs"
 
@@ -30,13 +30,18 @@ def load_spec(spec_identifier: str):
     spec_name, spec_version = spec_identifier.split(":")
 
     # fp = SPECS_ROOT_PATH / spec_name / f"{spec_version}.yaml"
-    fp = importlib.resources.files(__package__) / "specs" / spec_name / f"{spec_version}.yaml"
+    fp = (
+        importlib.resources.files(__package__)
+        / "specs"
+        / spec_name
+        / f"{spec_version}.yaml"
+    )
     if not fp.exists():
         raise ValueError(f"Spec file {fp} for {spec_identifier} does not exist.")
 
     with open(fp, "r") as f:
         spec = yaml.safe_load(f)
-    
+
     return spec
 
 
