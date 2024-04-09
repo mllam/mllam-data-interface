@@ -29,3 +29,6 @@ dev = [
 
 [tool.isort]
 profile = "black"
+
+[tool.pdm.build]
+source-includes = ["specs"]

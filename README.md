@@ -8,7 +8,8 @@ The purpose of `mllam_data_interface` is to provide a simple way to:
   `pytorch.Dataset` expects a `zarr`-based training dataset to contain
 - check a `zarr` training-dataset against a specification
 - provide storage for a collection of dataset specifications (these are in
-  [specs/](specs/) with path format `specs/{spec_name}/{spec_version}.yaml`)
+  [specs/](src/mllam_data_interface/specs/) with path format
+  `specs/{spec_name}/{spec_version}.yaml`)
 
 # Usage
 
