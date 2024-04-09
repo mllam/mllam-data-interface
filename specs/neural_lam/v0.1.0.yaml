@@ -1,0 +1,8 @@
+variables:
+  static:
+    dims: [grid_index, feature]
+  state:
+    dims: [time, grid_index, state_feature]
+  forcing:
+    dims: [time, grid_index, forcing_feature]
+attributes: [version]
