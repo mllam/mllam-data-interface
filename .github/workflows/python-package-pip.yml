@@ -11,10 +11,12 @@ jobs:
         os: [ubuntu-latest]
         python-version: [3.9]
     steps:
-      - uses: actions/checkout@v2
-      - name: Install package with pip
+      - uses: actions/checkout@v4
+      - name: Setup PDM
+        uses: pdm-project/setup-pdm@v4
+      - name: Install package with pdm
         run: |
-          pip install ".[dev]"
+          pdm install
       - name: Run tests
         run: |
-          python -m pytest
+          pdm run python -m pytest
